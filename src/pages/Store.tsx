@@ -7,6 +7,7 @@ import Newsletter from "@/components/store/Newsletter";
 import Footer from "@/components/store/Footer";
 import ShoppingCart, { CartItem } from "@/components/store/ShoppingCart";
 import { Product } from "@/components/store/ProductCard";
+import ProductQuickView from "@/components/store/ProductQuickView";
 import { sampleProducts } from "@/data/products";
 import { useToast } from "@/hooks/use-toast";
 
@@ -14,6 +15,8 @@ const Store = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const { toast } = useToast();
 
   const addToCart = (product: Product) => {
@@ -57,10 +60,8 @@ const Store = () => {
   };
 
   const handleQuickView = (product: Product) => {
-    toast({
-      title: "Quick View",
-      description: `Opening quick view for ${product.name}`,
-    });
+    setQuickViewProduct(product);
+    setIsQuickViewOpen(true);
   };
 
   const handleCheckout = () => {
@@ -101,6 +102,13 @@ const Store = () => {
         onUpdateQuantity={updateCartQuantity}
         onRemoveItem={removeFromCart}
         onCheckout={handleCheckout}
+      />
+
+      <ProductQuickView
+        product={quickViewProduct}
+        open={isQuickViewOpen}
+        onClose={() => setIsQuickViewOpen(false)}
+        onAddToCart={addToCart}
       />
     </div>
   );

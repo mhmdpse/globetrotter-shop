@@ -67,7 +67,8 @@ const ProductCard = ({ product, onAddToCart, onQuickView }: ProductCardProps) =>
         {/* Product Image */}
         <img
           src={product.image}
-          alt={product.name}
+          alt={`${product.name} product image`}
+          loading="lazy"
           className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
