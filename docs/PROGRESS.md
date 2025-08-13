@@ -1,47 +1,68 @@
-# تقرير التقدّم — Globetrotter Shop
+# تقرير التقدّم — Globetrotter Shop (Flask)
 
-تاريخ التحديث: 2025-08-12
+تاريخ التحديث: 2025-08-13
 
-## المرحلة الأولى — الواجهة الأمامية (Front-end)
-- (مكتمل 70%) تعديل الصفحات الرئيسية (الصفحة الرئيسية + شبكة المنتجات + عربة جانبية)
-- (مكتمل 90%) تصميم واجهة جاذبة ومتجاوبة لكل الأجهزة
-- (مكتمل 75%) تفاعلات ديناميكية (إضافة/تحديث العربة، إشعارات Toast)
-- (مكتمل 70%) مؤثرات حركة (Hover, Fade-in, Float, تحريك شارة العربة)
-- (مكتمل 45%) مؤثرات بصرية (Hero محسن، صور Lazy، تدرجات)
+## المرحلة الأولى — الواجهة الأمامية (Front‑end)
+- Modify main pages (home, product, cart): 65%
+  - موجود: الصفحة الرئيسية + عربة جانبية Slide-over + نافذة عرض سريع للمنتج
+  - ناقص: صفحة منتج تفصيلية (/product/:id) + صفحة Cart مستقلة
+  - ملفات: src/pages/Store.tsx, src/pages/Index.tsx, src/components/store/{Header,HeroSection,CategorySection,ProductGrid,ProductCard,ShoppingCart,Newsletter,Footer}.tsx
+- Design responsive UI: 90%
+  - ناقص: قائمة موبايل متقدمة + فلترة/فرز على الموبايل
+  - ملفات: جميع مكونات store + src/index.css + tailwind.config.ts
+- Dynamic interactions (سعر/Cart تفاعلي): 65%
+  - موجود: إضافة/تعديل/حذف من العربة + توست
+  - ناقص: تغيّر السعر حسب خيارات/متغيرات المنتج (مثل الحجم/اللون)
+  - ملفات: ProductGrid, ProductCard, ShoppingCart
+- Motion effects (Hover/Add-to-cart animation): 70%
+  - موجود: Hover/Scale/Transitions أساسية
+  - ناقص: حركة انتقال المنتج إلى أيقونة العربة + micro‑interactions (Ripple/Press)
+- Visual effects (Slides/Video/Fonts): 45%
+  - موجود: ui/carousel (غير مُفعّل)
+  - ناقص: سلايدر فعّال، خيار خلفية فيديو للـ Hero، خطوط مخصّصة
 
-ما تم إنجازه في الكود:
-- إضافة نافذة “عرض سريع” للمنتج (ProductQuickView) مع الشراء السريع.
-- تحسين بطاقة المنتج: صور Lazy، Alt محسّن، تحسينات وصول.
-- توست للإضافة/التحديث/الحذف من العربة.
-- تحسينات أنيميشن في الشبكة والـ Hero.
+Phase One (إجمالي): 64%
 
-## المرحلة الثانية — الخادم وقاعدة البيانات (Back-end)
-- (غير مكتمل 0%) تصميم قاعدة بيانات (products, orders, customers)
-- (غير مكتمل 0%) بناء API متكامل وربط المتجر بالخادم
-- (غير مكتمل 0%) RLS/الحماية، التشفير، SSL
-
-ملاحظة: سنفعّل Supabase عبر تكامل Lovable الأصلي عند تأكيد التفعيل، ثم ننشئ مستخدم Admin ومستخدم عادي ونشارك الاعتمادات المؤقتة بأمان.
+## المرحلة الثانية — الخادم وواجهة برمجة التطبيقات (Back‑end via Flask)
+- DB design: 0% (التطبيق الحالي يعتمد بيانات ثابتة من src/data/products.ts)
+- Integrated API: 0% (لا يوجد ربط مع Flask بعد)
+- Security/SSL: 0% (يلزم إعداد على الخادم)
 
 ## المرحلة الثالثة — بوابات الدفع (Payments)
-- (غير مكتمل 0%) اختيار الخدمة (Stripe/PayPal) والحصول على المفاتيح
-- (غير مكتمل 0%) إنشاء مسار دفع /api/checkout وتحديث حالة الطلب
-- (غير مكتمل 0%) تقارير الدفع في لوحة التحكم
+- اختيار مزوّد/مفاتيح/endpoint /api/checkout/تحديث الطلبات/تقارير: 0%
 
 ## المرحلة الرابعة — الشحن (Shipping)
-- (غير مكتمل 0%) التكامل مع مزود شحن وحساب التكلفة وإصدار بوليصة إلكترونية
+- الدمج/حساب الشحن/بوليصة إلكترونية/إعدادات لوحة التحكم: 0%
 
 ## المرحلة الخامسة — الأمان والنشر (Security & Deployment)
-- (غير مكتمل 10%) أساسيات SEO وميتا على الصفحة الرئيسية
-- (غير مكتمل 0%) WAF، تنظيف المدخلات، إخفاء المعلومات الحساسة
+- استضافة قوية/WAF/تنظيف المُدخلات/إخفاء المعلومات الحساسة: 0%
 
-## ملفات/مكوّنات تمت إضافتها أو تحديثها
-- src/components/store/ProductQuickView.tsx (جديد)
-- src/pages/Store.tsx (تحديث: حالة العرض السريع + الربط)
-- src/components/store/ProductCard.tsx (تحديث: Lazy + Alt + تحسينات)
+## ما تم إنجازه في الكود
+- ProductQuickView (عرض سريع) + تحسين Lazy/Alt للصور + إشعارات Toast + بعض الأنيميشن.
 
-## المهام القادمة المقترحة (قابلة للتنفيذ فورًا)
-1) تفعيل Supabase ثم إنشاء الجداول الأساسية + RLS.
-2) إنشاء مستخدم Admin ومستخدم عادي بكلمات مرور مؤقتة.
-3) صفحة تفاصيل منتج كاملة (مسار /product/:id) بعد رفع حالة العربة إلى مزوّد Context.
-4) اختيار بوابة دفع (Stripe) وتجهيز تدفق Checkout.
+## المهام القادمة المقترحة (مرتبطة بملفات)
+1) ربط Flask وجلب المنتجات:
+   - استبدال src/data/products.ts عبر استهلاك GET /api/products و GET /api/products/:id باستخدام React Query.
+   - ملفات: src/pages/Store.tsx, src/components/store/ProductGrid.tsx, src/components/store/ProductCard.tsx
+2) صفحة منتج تفصيلية + صفحة Cart مستقلة:
+   - إضافة مسارات: /product/:id و /cart
+   - ملفات جديدة: src/pages/Product.tsx, src/pages/Cart.tsx
+3) خيارات المنتج والسعر المتغيّر:
+   - تطبيق خصائص (الحجم/اللون) وتأثيرها على السعر والمخزون
+   - ملفات: ProductCard, ProductQuickView, ShoppingCart
+4) تفعيل Carousel + خطوط مخصّصة + مؤثرات حركة إضافية:
+   - ملفات: HeroSection, index.css, tailwind.config.ts, ui/carousel
+5) الدفع عبر Stripe (توثيق وتنفيذ في Flask):
+   - endpoint: POST /api/checkout + Webhooks
+6) أساسيات الأمن/SSL على Flask: CORS, Rate limiting, Headers
 
+## ملفات توثيق مضافة/مقترحة
+- ROADMAP.md — خارطة الطريق مرحليًا ومَعالم التنفيذ
+- docs/INTEGRATION_FLASK.md — توثيق ربط الواجهة مع Flask (نقاط النهاية، الصيغ، CORS)
+- docs/PAYMENTS.md — خطة الدمج مع Stripe وتدفّق الطلب
+- CHANGELOG.md — سجل تغييرات وفق Conventional Commits
+- .github/ISSUE_TEMPLATE/{feature_request.md, bug_report.md} — قوالب قضايا
+
+ملاحظات:
+- مصدر البيانات الحالي مؤقت (src/data/products.ts). بعد ربط Flask سيُزال هذا الاعتماد تدريجيًا.
+- جميع التعديلات هنا توثيقية فقط حتى الآن.
