@@ -25,7 +25,7 @@ const Header = ({ cartItems, onCartClick, onMenuClick }: HeaderProps) => {
           >
             <Menu className="h-5 w-5" />
           </Button>
-          <div className="font-bold text-2xl bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+          <div className="font-display font-bold text-2xl bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             FBM Store
           </div>
         </div>
@@ -60,7 +60,7 @@ const Header = ({ cartItems, onCartClick, onMenuClick }: HeaderProps) => {
           >
             <ShoppingCart className="h-5 w-5" />
             {cartItems > 0 && (
-              <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs animate-cart-bounce">
+              <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs animate-cart-bounce interactive-element">
                 {cartItems}
               </Badge>
             )}

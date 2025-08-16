@@ -28,13 +28,20 @@ interface ProductCardProps {
 const ProductCard = ({ product, onAddToCart, onQuickView }: ProductCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+    setIsAdding(true);
     onAddToCart(product);
+    
+    // Add cart animation effect
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 600);
   };
 
   return (
-    <Card className="product-card group cursor-pointer">
+    <Card className="product-card group cursor-pointer product-hover-effect">
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden rounded-t-xl">
         {/* Badges */}
@@ -84,15 +91,15 @@ const ProductCard = ({ product, onAddToCart, onQuickView }: ProductCardProps) =>
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
           <Button
             size="sm"
-            className="btn-cart"
+            className={`btn-cart interactive-element ${isAdding ? 'add-to-cart-animation' : ''}`}
             onClick={(e) => {
               e.stopPropagation();
               handleAddToCart();
             }}
-            disabled={!product.inStock}
+            disabled={!product.inStock || isAdding}
           >
-            <ShoppingCart className="h-4 w-4 mr-2" />
-            Add to Cart
+            <ShoppingCart className={`h-4 w-4 mr-2 ${isAdding ? 'animate-cart-bounce' : ''}`} />
+            {isAdding ? 'Adding...' : 'Add to Cart'}
           </Button>
           <Button
             size="sm"
@@ -119,12 +126,12 @@ const ProductCard = ({ product, onAddToCart, onQuickView }: ProductCardProps) =>
       {/* Product Info */}
       <div className="p-4 space-y-3">
         {/* Category */}
-        <div className="text-sm text-muted-foreground uppercase tracking-wide">
+        <div className="accent-text text-muted-foreground">
           {product.category}
         </div>
 
         {/* Product Name */}
-        <h3 className="font-semibold text-lg leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="font-display font-semibold text-lg leading-tight line-clamp-2 group-hover:text-primary transition-colors">
           {product.name}
         </h3>
 

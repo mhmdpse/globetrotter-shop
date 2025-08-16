@@ -50,7 +50,7 @@ const HeroSection = () => {
                   </div>
 
                   {/* Heading */}
-                  <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
+                  <h1 className="heading-primary text-white mb-6 animate-fade-in">
                     {slide.title.split(' ').slice(0, 1).join(' ')}
                     <span className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
                       {slide.title.split(' ').slice(1).join(' ')}
@@ -58,19 +58,19 @@ const HeroSection = () => {
                   </h1>
 
                   {/* Description */}
-                  <p className="text-xl md:text-2xl mb-8 text-blue-100 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                  <p className="body-text text-xl md:text-2xl mb-8 text-blue-100 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                     {slide.description}
                   </p>
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                    <Button className="btn-hero group">
+                    <Button className="btn-hero group interactive-element">
                       {slide.cta1}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Button>
                     <Button 
                       variant="outline" 
-                      className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm px-8 py-4 text-lg"
+                      className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm px-8 py-4 text-lg interactive-element"
                     >
                       {slide.cta2}
                     </Button>

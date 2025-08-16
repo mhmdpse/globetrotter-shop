@@ -118,6 +118,10 @@ export default {
 					'60%': { transform: 'scale(1.05)' },
 					'80%': { transform: 'scale(0.98)' },
 					'100%': { transform: 'scale(1)' }
+				},
+				'wiggle': {
+					'0%, 100%': { transform: 'rotate(-3deg)' },
+					'50%': { transform: 'rotate(3deg)' }
 				}
 			},
 			animation: {
@@ -128,7 +132,14 @@ export default {
 				'scale-in': 'scale-in 0.3s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite',
-				'cart-bounce': 'cart-bounce 0.6s ease-in-out'
+				'cart-bounce': 'cart-bounce 0.6s ease-in-out',
+				'pulse-slow': 'pulse 3s linear infinite',
+				'wiggle': 'wiggle 1s ease-in-out infinite'
+			},
+			fontFamily: {
+				'display': ['Playfair Display', 'serif'],
+				'body': ['Inter', 'sans-serif'],
+				'accent': ['Montserrat', 'sans-serif']
 			}
 		}
 	},
